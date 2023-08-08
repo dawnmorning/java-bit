@@ -12,5 +12,6 @@
 	</properties>
   <modules>
   	<module>helloworldmodule</module>
+  	<module>practice01</module>
   </modules>
 </project>
