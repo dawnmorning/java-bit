@@ -13,5 +13,6 @@
   <modules>
   	<module>helloworldmodule</module>
   	<module>practice01</module>
+  	<module>practice02</module>
   </modules>
 </project>
