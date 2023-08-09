@@ -9,6 +9,9 @@ public class Account {
 		System.out.println(accountNo + "계좌의 잔고는 " + balance + "만원입니다.");
 		
 	}
+//	public void setAccount(String accountNo) {
+//		this.accountNo = accountNo;
+//	}
 	
 	public String getAccountNo() {
 		return accountNo;
@@ -16,7 +19,9 @@ public class Account {
 	public int getBalance() {
 		return balance;
 	}
-	
+	public void setBalance() {
+		this.balance = balance;
+	}
 	public void save(int amount) {
 		balance += amount;
 		System.out.println(accountNo + " 계좌에 " + amount + "만원이 입금되었습니다.");
