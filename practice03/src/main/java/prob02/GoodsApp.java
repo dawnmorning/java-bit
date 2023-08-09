@@ -20,26 +20,26 @@ public class GoodsApp {
 			goods[i] = new Goods(name, price, count);
 		}
 		// 상품 출고
-//		for (Goods good : goods) {
-//			System.out.println(good.name + "(가격: " + good.price + "원)이 " + + good.quantity + 
-//					"개 입고 되었습니다.");
-//		}
+		for (Goods good : goods) {
+			System.out.println(good.name + "(가격: " + good.price + "원)이 " + + good.count + 
+					"개 입고 되었습니다.");
+		}
 		// 상품 출고
-				for (int i = 0; i < COUNT_GOODS; i++) {
-					System.out.println(names[i] + "(가격: " + prices[i] + "원)이 " + quantities[i] + "개 입고 되었습니다.");
-				}
+//				for (int i = 0; i < COUNT_GOODS; i++) {
+//					System.out.println(names[i] + "(가격: " + prices[i] + "원)이 " + quantities[i] + "개 입고 되었습니다.");
+//				}
 		// 자원정리
 		scanner.close();
 	}
-//	static class Goods{
-//		String name;
-//		int price;
-//		int count;
-//		
-//		public Goods(String name, int price, int count) {
-//			this.name = name;
-//			this.price = price;
-//			this.count = count;
-//		}
-//	}
+	static class Goods{
+		String name;
+		int price;
+		int count;
+		
+		public Goods(String name, int price, int count) {
+			this.name = name;
+			this.price = price;
+			this.count = count;
+		}
+	}
 }
