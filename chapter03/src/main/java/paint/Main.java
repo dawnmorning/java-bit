@@ -6,7 +6,9 @@ public class Main {
 		Point point1 = new Point(10, 20);
 //		point1.setX(10);
 //		point1.setY(20);
-		drawPoint(point1);
+		
+//		drawPoint(point1);
+		draw(point1);
 		// point1.disappear();
 		point1.show(false);
 
@@ -21,15 +23,45 @@ public class Main {
 		
 		// 강제로 우선순위 만들어 주기
 		((ColorPoint)point2).setColor("red");
-		drawPoint(point2);
-
+//		drawPoint(point2);
+		draw(point2);
+		
+		Rect rect = new Rect();
+//		drawRect(rect);
+//		drawShape(rect);
+		draw(rect);
+		
+		Triangle triangle = new Triangle();
+//		drawTri(triangle);
+//		drawShape(triangle);
+		draw(triangle);
+		
+		// new Shape();
+		// Cannot instantiate the type Shape
+		Circle circle = new Circle();
+//		drawShape(circle);
+		draw(circle);
+		draw(new GraphicText("Hello World"));
 	}
-
-	public static void drawPoint(Point point) {
-		point.show();
+	public static void draw(Drawable drawable) {
+		drawable.draw();
 	}
+//	public static void drawPoint(Point point) {
+//		point.show();
+//	}
 
 //	public static void drawColorPoint(ColorPoint colorPoint) {
 //		colorPoint.show();
+//	}
+	
+//	public static void drawShape(Shape shape) {
+//		shape.draw();
+//	}
+	
+//	public static void drawRect(Rect rect) {
+//		rect.draw();
+//	}
+//	public static void drawTri(Triangle triangle) {
+//		triangle.draw();
 //	}
 }
