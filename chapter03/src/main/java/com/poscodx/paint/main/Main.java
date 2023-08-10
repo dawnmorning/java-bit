@@ -1,4 +1,13 @@
-package paint;
+package com.poscodx.paint.main;
+
+import com.poscodx.paint.i.Drawable;
+import com.poscodx.paint.point.ColorPoint;
+import com.poscodx.paint.point.Point;
+import com.poscodx.paint.shape.Circle;
+import com.poscodx.paint.shape.Rect;
+import com.poscodx.paint.shape.Shape;
+import com.poscodx.paint.shape.Triangle;
+import com.poscodx.paint.text.GraphicText;
 
 public class Main {
 
@@ -42,6 +51,21 @@ public class Main {
 //		drawShape(circle);
 		draw(circle);
 		draw(new GraphicText("Hello World"));
+		
+		// instanceof 연산자 Test
+		System.out.println(circle instanceof Shape);
+		System.out.println(circle instanceof Circle);
+		System.out.println(circle instanceof Object);
+		
+		// 오류: 연산자 우측항이 클래스인 경우, 레퍼펀스 하고 있는 (Circle circle) class타입의 
+		// hierarchy 상의 하위와 상위만 instanceof 연산자를 사용할 수 있다.
+		// interface는 hierarchy 관계가 아니라 경우가 다를 수 있음
+		// System.out.println(circle instanceof Rect);
+		
+		// 연산자 우측항이 인터페이스인 경우,
+		// Hierarchy가 없으므로.. instanceof 연산자를 사용할 수 있다.
+		System.out.println(circle instanceof Drawable);
+		System.out.println(circle instanceof Runnable);
 	}
 	public static void draw(Drawable drawable) {
 		drawable.draw();
