@@ -7,6 +7,37 @@ public class Song {
 	private String artist;
 	private int track;
 	private int year;
+	// 없으면 SongTest.java에 에러가 뜬다. 오버로딩 필요
+//	public Song() {
+//	}
+	public Song(String title, String album, String composer, String artist, int track, int year) {
+		this.title = title;
+		this.album = album;
+		this.composer = composer;
+		this.artist = artist;
+		this.track = track;
+		this.year = year;
+		
+		System.out.println("....some code1");
+		System.out.println("....some code2");
+		System.out.println("....some code3");
+		System.out.println("....some code4");
+		System.out.println("....some code5");
+	}
+	// 오버로딩
+	public Song(String title, String artist) {
+		
+		// this키워드를 사용해서 중복 없애기
+		this(title, null, null, artist, 0, 0);
+//		this.title = title;
+//		this.artist = artist;
+//		
+//		System.out.println("....some code1");
+//		System.out.println("....some code2");
+//		System.out.println("....some code3");
+//		System.out.println("....some code4");
+//		System.out.println("....some code5");
+	}
 
 	public String getTitle() {
 		return title;
@@ -57,8 +88,8 @@ public class Song {
 	}
 
 	public void show() {
-		System.out.println(artist + " - " + title + "(" + album + ", " + year 
-				+ ", " + track + " 번 track, " + composer + " 작곡)");
+		System.out.println(
+				artist + " - " + title + "(" + album + ", " + year + ", " + track + " 번 track, " + composer + " 작곡)");
 	}
 
 }
