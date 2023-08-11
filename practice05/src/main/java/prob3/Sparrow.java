@@ -1,7 +1,14 @@
 package prob3;
 
 public class Sparrow extends Bird {
+	private String name;
+	public String getName() {
+		return name;
+	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
 	@Override
 	public void fly() {
 		System.out.println("참새(" + getName() + ")가 날아다닙니다.");
