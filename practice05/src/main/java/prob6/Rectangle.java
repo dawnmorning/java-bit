@@ -17,7 +17,7 @@ public class Rectangle extends Shape implements Resizable{
 
 	@Override
 	public double getPerimeter() {
-		return 2 * width + 2 * height;
+		return 2*(width + height);
 
 	}
 
