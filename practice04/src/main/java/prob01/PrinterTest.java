@@ -1,29 +1,48 @@
 package prob01;
 
-import java.security.PublicKey;
-
 public class PrinterTest {
-	
+
 	public static void main(String[] args) {
 		Printer printer = new Printer();
+
+		printer.println(10);
+		printer.println(true);
+		printer.println(5.7);
+		printer.println("홍길동");
+		System.out.println(printer.sum(1));
+		System.out.println(printer.sum(1,2));
+		System.out.println(printer.sum(1,2,3));
+		System.out.println(printer.sum(1,2,3,4));
 		
-		printer.println( 10 );
-		printer.println( true );
-		printer.println( 5.7 );
-		printer.println( "홍길동" );
+		printer.println(10,true);
+		printer.println(10,true,"둘리");
+		
 	}
-	static class Printer{
-		public void println(String str) {
-			System.out.println(str);
+
+	static class Printer {
+//		public void println(String str) {
+//			System.out.println(str);
+//		}
+//		public void println(int number) {
+//			System.out.println(number);
+//		}
+//		public void println(boolean bool) {
+//			System.out.println(bool);
+//		}
+//		public void println(double number) {
+//			System.out.println(number);
+//		}
+		public <T> void println(T... ts) {
+			for (T t : ts) {
+				System.out.println(t);				
+			}
 		}
-		public void println(int number) {
-			System.out.println(number);
-		}
-		public void println(boolean bool) {
-			System.out.println(bool);
-		}
-		public void println(double number) {
-			System.out.println(number);
+		public int sum(Integer...nums) {
+			 int answer = 0;
+			 for(Integer i:nums) {
+				 answer += i;
+			 }
+			 return answer;
 		}
 	}
 }
