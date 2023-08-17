@@ -1,6 +1,7 @@
 package prob05;
 
 import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -20,7 +21,6 @@ public class LoginMain {
 
 		System.out.print("비밀번호를 입력하시오 : ");
 		String password = scanner.nextLine();
-		
 		try {
 			login(joinUsers, new User(id, password));
 			System.out.println("로그인 성공");

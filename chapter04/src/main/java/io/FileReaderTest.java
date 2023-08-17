@@ -18,6 +18,7 @@ public class FileReaderTest {
 
 			int count = 0;
 			int data = -1;
+			// 한 문자씩
 			while ((data = in.read()) != -1) {
 				System.out.print((char) data);
 				count++;
@@ -29,6 +30,7 @@ public class FileReaderTest {
 			count = 0;
 			data = -1;
 
+			//한 바이트씩
 			is = new FileInputStream("test.txt");
 			while ((data = is.read()) != -1) {
 				System.out.print((char) data);
