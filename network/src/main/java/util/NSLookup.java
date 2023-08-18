@@ -9,7 +9,6 @@ public class NSLookup {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		InetAddress[] host = null;
-		String[] returnStr = null;
 		while (true) {
 			System.out.println("찾아볼 주소를 입력해보세요.>> ");
 			String line = scanner.nextLine();
@@ -27,7 +26,6 @@ public class NSLookup {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
 		}
 	}
 
