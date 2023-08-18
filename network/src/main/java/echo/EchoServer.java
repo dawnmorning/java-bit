@@ -8,9 +8,10 @@ import java.io.PrintWriter;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Scanner;
 
 public class EchoServer {
-	private static final int PORT = 8000;
+	public static final int PORT = 8000;
 
 	public static void main(String[] args) {
 		ServerSocket serverSocket = null;
@@ -53,6 +54,7 @@ public class EchoServer {
 					if (socket != null && !socket.isClosed()) {
 						socket.close();
 					}
+
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
