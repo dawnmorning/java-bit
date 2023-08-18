@@ -6,13 +6,12 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.InetSocketAddress;
-import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
 
 public class EchoRequestHandler extends Thread {
 	private Socket socket;
-	ServerSocket serverSocket = null;
+
 
 	public EchoRequestHandler(Socket socket) {
 		this.socket = socket;
