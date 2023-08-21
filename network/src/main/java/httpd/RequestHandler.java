@@ -17,10 +17,15 @@ public class RequestHandler extends Thread {
 	@Override
 	public void run() {
 		try {
+			// logging Remote Host IP Address & Port
+			// 현재 접속한 유저 연결
+			InetSocketAddress inetSocketAddress = (InetSocketAddress) socket.getRemoteSocketAddress();
+			consoleLog("connected from " + inetSocketAddress.getAddress().getHostAddress() + ":"
+					+ inetSocketAddress.getPort());
 			// get IOStream
 			OutputStream outputStream = socket.getOutputStream();
 			BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream(), "utf-8"));
-			
+
 			String request = null;
 			while (true) {
 				String line = br.readLine();
@@ -36,16 +41,20 @@ public class RequestHandler extends Thread {
 				// 요청 헤더의 첫번째 라인만 읽음
 				if (request == null) {
 					request = line;
-					
+
 					break;
 				}
 //				consoleLog(line);
 			}
 			consoleLog(request);
-			// logging Remote Host IP Address & Port
-			InetSocketAddress inetSocketAddress = (InetSocketAddress) socket.getRemoteSocketAddress();
-			consoleLog("connected from " + inetSocketAddress.getAddress().getHostAddress() + ":"
-					+ inetSocketAddress.getPort());
+			String[] tokens = request.split(" ");
+			if ("GET".equals(tokens[0])) {
+				responseStaticResource(outputStream, tokens[1], tokens[2]); // os, 자원에 대한 경로, protocol 버전
+			} else {
+				// 400 (Bad Request), POST, PUT, DELETE, HEAD, CONNECT는 쳐낸다.
+				// SimpleHttpServer에서는 무시
+				// responseStaticResource400Error(outputStream, tokens[2]);
+			}
 
 			// 예제 응답입니다.
 			// 서버 시작과 테스트를 마친 후, 주석 처리 합니다.
@@ -67,6 +76,10 @@ public class RequestHandler extends Thread {
 				consoleLog("error:" + ex);
 			}
 		}
+	}
+
+	private void responseStaticResource(OutputStream outputStream, String url, String protocol) {
+		
 	}
 
 	public void consoleLog(String message) {
