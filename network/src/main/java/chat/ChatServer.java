@@ -13,7 +13,7 @@ public class ChatServer {
 
 	public static void main(String[] args) {
 		ServerSocket serverSocket = null;
-		List<ChatServerThread> list = Collections.synchronizedList(new ArrayList<>());
+		List<ChatServerThread> userList = Collections.synchronizedList(new ArrayList<>());
 		try {
 			serverSocket = new ServerSocket();
 			serverSocket.bind(new InetSocketAddress("0.0.0.0", PORT));
@@ -21,14 +21,11 @@ public class ChatServer {
 
 			while (true) {
 				Socket socket = serverSocket.accept();
-				new ChatServerThread(socket, list).start();
+				new ChatServerThread(socket, userList).start();
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
+		} 
 	}
-	
-	private static void log(String message) {
-		System.out.println("[EchoServer#" + Thread.currentThread().getId() + "] " + message);
-	}
+
 }
