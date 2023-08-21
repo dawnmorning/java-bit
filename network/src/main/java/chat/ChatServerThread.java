@@ -28,11 +28,10 @@ public class ChatServerThread extends Thread {
 			PrintWriter pw = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true);
 			BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream(), "utf-8"));
 			pw.println("");
-			pw.println("어서오세요. 입장: + 닉네임을 입력해주세요.");
+			pw.println("어서오세요.");
+			pw.println("닉네임을 입력해주세요.");
 			pw.println("");
 			pw.println("================================");
-			pw.println("채팅: + 텍스트는 채팅입니다.");
-			pw.println("퇴장: + 텍스트는 대화방을 나갈 수 있어요.");
 			String msg = null;
 			while ((msg = br.readLine()) != null) {
 				String[] tokens = msg.split(":");

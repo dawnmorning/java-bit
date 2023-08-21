@@ -27,6 +27,7 @@ public class ChatServer {
 			e.printStackTrace();
 		}
 	}
+	
 	private static void log(String message) {
 		System.out.println("[EchoServer#" + Thread.currentThread().getId() + "] " + message);
 	}
