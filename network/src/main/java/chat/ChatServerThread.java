@@ -54,7 +54,6 @@ public class ChatServerThread extends Thread {
 	}
 
 	public void notifyAllClients(String message) {
-
 			try {
 				for (ChatServerThread client : userList) {
 					PrintWriter pw = new PrintWriter(new OutputStreamWriter(client.socket.getOutputStream()), true);
@@ -69,10 +68,10 @@ public class ChatServerThread extends Thread {
 
 	private void join(String nickname, PrintWriter user) {
 		this.nickname = nickname;
-		log(nickname + "님이 입장하였습니다");
-		notifyAllClients(nickname + "님이 입장 하였습니다.");
-		user.println("입장: 확인");
 		userList.add(this);
+		log(nickname + "님이 입장하였습니다");
+		user.println("입장: 확인");
+		notifyAllClients(nickname + "님이 입장 하였습니다.");
 	}
 	
 

@@ -25,15 +25,16 @@ public class ChatClient {
 			BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream(), "utf-8"));
 
 			scanner = new Scanner(System.in);
-			
 
 			System.out.println("닉네임을 입력하세요>>");
 			String nickname = scanner.nextLine();
 			pw.println("join:" + nickname);
 
 			String confirm = br.readLine();
+	
 			if (confirm.equals("입장: 확인")) {
 				System.out.println("채팅방에 입장했어요.");
+	
 			}
 			new ChatClientThread(socket).start();
 			while (true) {
@@ -46,11 +47,11 @@ public class ChatClient {
 				if (msg.equals("") == false) {
 					pw.println("chat:" + msg);
 				}
-				if(scanner.hasNextLine() == false) {
+				if (scanner.hasNextLine() == false) {
 					continue;
 				}
 			}
-			
+
 		} catch (ConnectException e) {
 			System.out.println("[ClientError] : " + e);
 		} catch (IOException e) {
