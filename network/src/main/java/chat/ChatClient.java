@@ -39,7 +39,6 @@ public class ChatClient {
 			new ChatClientThread(socket).start();
 			while (true) {
 				String msg = scanner.nextLine();
-				pw.println(nickname + ":" + msg);
 				if (msg.toLowerCase().equals("quit")) {
 					pw.println("quit");
 					break;
