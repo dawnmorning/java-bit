@@ -39,11 +39,8 @@ public class ChatClientApp {
 			PrintWriter pw = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "utf-8"), true);
 			BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream(), "utf-8"));
 
+			new ChatWindow(nickname, socket).show();
 			pw.println("join: " + nickname);
-			String confirm = br.readLine();
-			if (confirm.equals("입장: 확인")) {
-				new ChatWindow(nickname, socket).show();
-			}
 		} catch (ConnectException e) {
 			System.out.println("[Connection Error] : " + e);
 		} catch (IOException e) {

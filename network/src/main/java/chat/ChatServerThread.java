@@ -82,9 +82,10 @@ public class ChatServerThread extends Thread {
 	}
 
 	private void quit() {
+		userList.remove(this);
 		notifyAllClients(nickname + "님이 채팅방을 나갔어요.");
 		log(nickname + "님이 퇴장하였음");
-		userList.remove(this);
+		
 	}
 
 	private void log(String message) {

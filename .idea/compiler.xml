@@ -8,7 +8,6 @@
         <outputRelativeToContentRoot value="true" />
         <module name="practice03" />
         <module name="practice04" />
-        <module name="SelfPractice" />
         <module name="practice01" />
         <module name="practice02" />
         <module name="finaltest" />
@@ -19,5 +18,8 @@
         <module name="network" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="SelfPractice" target="20" />
+    </bytecodeTargetLevel>
   </component>
 </project>

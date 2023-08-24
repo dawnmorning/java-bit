@@ -110,17 +110,27 @@ public class ChatWindow {
 			if (socket != null && socket.isClosed()) {
 				socket.close();
 			}
+			pw.println("quit");
 			System.exit(0);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 	}
-
+	private void quit() {
+		String message = textField.getText();
+		if ("quit".equals(message)) {
+			pw.println("quit");
+		}
+	}
+	
+	
 	private void sendMessage() {
 		String message = textField.getText();
 		System.out.println(message);
-		// 비어있으면 보내지지 않게
+		if ("quit".equals(message)) {
+			quit();
+		}
 		pw.println("chat:" + message);
 		textField.setText("");
 		textField.requestFocus();
@@ -137,7 +147,9 @@ public class ChatWindow {
 			String msg = null;
 			try {
 				while ((msg = br.readLine()) != null) {
-					updateTextArea(msg);
+					if(!"입장: 확인".equals(msg)) { 
+	                    updateTextArea(msg);
+	                }
 				}
 			} catch (SocketException e) {
 				e.printStackTrace();
