@@ -71,9 +71,7 @@ public class ChatWindow {
 					sendMessage();
 				}
 			}
-
 		});
-
 		// Pannel
 		pannel.setBackground(Color.LIGHT_GRAY);
 		pannel.add(textField);
