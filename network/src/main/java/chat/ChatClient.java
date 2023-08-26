@@ -33,8 +33,7 @@ public class ChatClient {
 			String confirm = br.readLine();
 	
 			if (confirm.equals("입장: 확인")) {
-				System.out.println("채팅방에 입장했어요.");
-	
+				System.out.println(nickname + "님이 입장했어요.");
 			}
 			new ChatClientThread(socket).start();
 			while (true) {
