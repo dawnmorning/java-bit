@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.net.ConnectException;
 import java.net.Socket;
 import java.net.SocketException;
 import java.util.List;
@@ -39,6 +40,8 @@ public class ChatServerThread extends Thread {
 				}
 			}
 
+		} catch (ConnectException e) {
+			System.out.println("[ServerError] : " + e);
 		} catch (SocketException e) {
 			System.out.println("[ServerError] : " + e);
 		} catch (IOException e) {
@@ -46,7 +49,12 @@ public class ChatServerThread extends Thread {
 		} finally {
 			try {
 				socket.close();
-			} catch (IOException e) {
+			}catch (ConnectException e) {
+				System.out.println("[ServerError] : " + e);
+			} catch (SocketException e) {
+				System.out.println("[ServerError] : " + e);
+			} 
+			catch (IOException e) {
 				System.out.println("[ServerError] : " + e);
 			}
 			userList.remove(this);
@@ -54,14 +62,14 @@ public class ChatServerThread extends Thread {
 	}
 
 	public void notifyAllClients(String message) {
-			try {
-				for (ChatServerThread client : userList) {
-					PrintWriter pw = new PrintWriter(new OutputStreamWriter(client.socket.getOutputStream()), true);
-					pw.println(message);
-				}
-			} catch (IOException e) {
-				System.out.println("[ServerError] : " + e);
-			
+		try {
+			for (ChatServerThread client : userList) {
+				PrintWriter pw = new PrintWriter(new OutputStreamWriter(client.socket.getOutputStream()), true);
+				pw.println(message);
+			}
+		} catch (IOException e) {
+			System.out.println("[ServerError] : " + e);
+
 		}
 
 	}
@@ -72,8 +80,8 @@ public class ChatServerThread extends Thread {
 		log(nickname + "님이 입장하였습니다");
 		user.println("입장: 확인");
 		notifyAllClients(nickname + "님이 입장 하였습니다.");
+		notifyAllClients("현재 인원은 " + userList.size() + "명 입니다.");
 	}
-	
 
 	private void message(String message) {
 		log(nickname + " : " + message);
@@ -85,11 +93,9 @@ public class ChatServerThread extends Thread {
 		userList.remove(this);
 		notifyAllClients(nickname + "님이 채팅방을 나갔어요.");
 		log(nickname + "님이 퇴장하였음");
-		
 	}
 
 	private void log(String message) {
 		System.out.println("[EchoServer#" + nickname + "]" + " " + message);
-		System.out.println("현재 인원: " + userList.size());
 	}
 }

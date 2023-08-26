@@ -1,10 +1,6 @@
 package chat.gui;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 import java.net.ConnectException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
@@ -15,7 +11,6 @@ public class ChatClientApp {
 	private static final int PORT = 9999;
 
 	public static void main(String[] args) {
-		String name = null;
 		Scanner scanner = new Scanner(System.in);
 		Socket socket = null;
 		String nickname = null;
@@ -36,11 +31,8 @@ public class ChatClientApp {
 			socket = new Socket();
 
 			socket.connect(new InetSocketAddress(SERVER_IP, PORT));
-			PrintWriter pw = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(), "utf-8"), true);
-			BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream(), "utf-8"));
-
 			new ChatWindow(nickname, socket).show();
-			pw.println("join: " + nickname);
+
 		} catch (ConnectException e) {
 			System.out.println("[Connection Error] : " + e);
 		} catch (IOException e) {

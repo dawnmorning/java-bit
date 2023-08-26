@@ -25,6 +25,6 @@ public class ChatServer {
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
-		} 
+		}
 	}
 }
