@@ -40,11 +40,11 @@ public class ChatServerThread extends Thread {
 				}
 			}
 
-		} catch (ConnectException e) {
-			System.out.println("[ServerError] : " + e);
-		} catch (SocketException e) {
+		}  catch (SocketException e) {
+			quit();
 			System.out.println("[ServerError] : " + e);
 		} catch (IOException e) {
+			quit();
 			System.out.println("[ServerError] : " + e);
 		} finally {
 			try {
